@@ -78,7 +78,6 @@ class Solution
     return [0] if n == 1
     return [0,1] if n == 2 
   
-    
     seq = fib_recursive(n - 1)
     seq << seq[-2] + seq[-1]  
     
