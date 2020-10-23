@@ -1,5 +1,5 @@
 class Solution
-
+  
   #1------------------------------
   def caesar_cipher(string, shift)
     lower = ("a".."z").to_a
@@ -8,6 +8,7 @@ class Solution
     encrypter = Hash[
       lower.zip(lower.rotate(shift)) + upper.zip(upper.rotate(shift))
     ]
+    
     string.chars.map { |c| encrypter.fetch(c, c) }.join 
   end 
   #2------------------------------
@@ -41,6 +42,7 @@ class Solution
         max_profit = value - min
       end
     end
+    
     [prices.index(best_buy_time), prices.index(best_sell_time)]
   end
   #4------------------------------
@@ -52,6 +54,7 @@ class Solution
         end
       end
     end
+    
     array
   end
   #5------------------------------
@@ -65,6 +68,7 @@ class Solution
       end
       array[i], array[min_index] = array[min_index], array[i] if min_index != i 
     end
+    
     array
   end
   #6------------------------------
@@ -76,7 +80,8 @@ class Solution
   
     
     seq = fib_recursive(n - 1)
-    seq << seq[-2] + seq[-1]
+    seq << seq[-2] + seq[-1]  
+    
     seq
   end
 
@@ -87,16 +92,19 @@ class Solution
     return [0,1] if n == 2 
 
     seq = [0, 1] 
-    (3..n).each { |i| seq << seq[-2] + seq[-1] }
+    (3..n).each { |i| seq << seq[-2] + seq[-1] }  
+    
     seq
   end
 
   #7------------------------------
   def self.merge(left, right)
     result = []
+    
     until left.length == 0 || right.length == 0 do
       result << (left.first <= right.first ? left.shift : right.shift)
     end
+ 
     result + left + right
   end
 
@@ -106,6 +114,7 @@ class Solution
     middle = array.length / 2
     left = merge_sort (array[0...middle])
     right = merge_sort (array[middle..-1])
+    
     merge(left, right)
   end
 
@@ -118,7 +127,7 @@ class Solution
     while min <= max
       middle = (min + max) / 2
       loop_count+=1
-        
+      
       if array[middle] == n
         print "#{loop_count} steps"
         return middle
@@ -126,8 +135,9 @@ class Solution
         max = middle - 1
       elsif array[middle] < n
         min = middle + 1
-      end 
-    end 
+      end     
+      
+    end    
     print "#{n} not found in this array"
     return nil
   end 
@@ -140,7 +150,7 @@ class Solution
     while min <= max
       middle = (min + max) / 2
       loop_count+=1
-        
+      
       if array[middle] == string
         print "#{loop_count} steps"
         return middle
@@ -149,13 +159,16 @@ class Solution
       elsif array[middle] < string
         min = middle + 1
       end 
+      
     end 
     print "#{string} not found in this array"
     return nil
   end 
+  
 end
      
 a = Solution.new
+
 #test---------------------------
 def gen(n)
   n.times.map { rand(8000) + 1 }
